@@ -29,7 +29,6 @@ for i, count in reqCount.most_common(100):
     if (count > 300):
         print(f"{i}: {count} requests")
 
-        
 # exports ips to a txt file
 with open('ip_alerts.txt', 'w') as f:
     f.write("FLAGGED\n")

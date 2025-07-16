@@ -16,5 +16,13 @@ A Python script that scans server logs to identify IP addresses with the most re
 4. Navigate to the root directory of the project:
 
 ```bash
-cd path/to/log-reader
-python script.py your-log-name.log
+cd path/to/log-reader 
+
+```
+
+5. Run the script with your log file name instead of 'example.log':
+
+```bash 
+python script.py example.log 
+
+```
