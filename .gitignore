@@ -1,3 +1,6 @@
 .env
+<<<<<<< HEAD
 ip_alerts.txt
+=======
+>>>>>>> d4603cd92c155aa068e457103c114a1d48583283
 example.log
