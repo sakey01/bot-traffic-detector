@@ -1,12 +1,16 @@
-# import required libraries
 import re
+import sys
 import collections
 
-# file path for logs (replace 'example.log' with your own file)
-logFile = "logs/example.log"
+# add log file as argument to cli
+if len(sys.argv) < 2:
+    print("file name missing")
+    sys.exit()
+
+logFile = 'logs/' + sys.argv[1]
 
 # regex to get IP
-regex = re.compile(r"^(\d{1,3}(?:\.\d{1,3}){3})")
+ipRegex = re.compile(r"^(\d{1,3}(?:\.\d{1,3}){3})")
 
 # store IP count
 ipCount = collections.Counter()
