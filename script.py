@@ -52,4 +52,5 @@ with open('ip_alerts.txt', 'w') as f:
             active_days = max(1, len({ts.date() for ts in ip_timestamps[ip]}))
             avg_per_day = count / active_days if active_days else count
             f.write(f"{ip} - {count} requests, {avg_per_day:.0f} per day over {active_days} days\n")
-        
+
+print ("script successful")
