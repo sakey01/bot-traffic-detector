@@ -9,8 +9,9 @@ if len(sys.argv) < 2:
 
 logFile = 'logs/' + sys.argv[1]
 
-# regex to get IP
-regex = re.compile(r"^(\d{1,3}(?:\.\d{1,3}){3})")
+# regex to get IP and timestamp
+ip_regex = re.compile(r"^(\d{1,3}(?:\.\d{1,3}){3})")
+timestamp_regex = re.compile(r'\[(\d{2}/\d{2}/\d{4}:\d{2}:\d{2}:\d{2})\]')
 
 # request count setup
 reqCount = collections.Counter()
@@ -18,20 +19,16 @@ reqCount = collections.Counter()
 # parses file to match regex conditions
 with open(logFile, "r") as file:
     for line in file:
-        match = regex.match(line)
+        match = ip_regex.match(line)
         if match:
             ip = match.group(1)
             reqCount[ip] += 1
 
-# prints IPs with requests over 300
-print("Most Common Requests")
-for i, count in reqCount.most_common(100):
-    if (count > 300):
-        print(f"{i}: {count} requests")
-
-# exports ips to a txt file
+# stores flagged IPs as a txt
 with open('ip_alerts.txt', 'w') as f:
-    f.write("FLAGGED\n")
-    for ip, count in reqCount.items():
-        if count >= 300:
-            f.write(f"{ip} - {count} requests\n")
+    f.write("Most Common Requests\n")
+    for i, count in reqCount.most_common(100):
+        if count > 250:
+            f.write(f"{i} - {count} requests\n")
+    print("Script Succesfull")
+        
